@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1>Hello World From Struts2</h1>
-    <form action="hello">
+    <%-- 这个action里面 someother == someother.action --%>
+    <form action="sendRedirect">
+    <%--<form action="hello">--%>
         <label for="name">Please enter your name</label><br/>
         <input type="text" name="name"/>
         <input type="submit" value="Say Hello"/>

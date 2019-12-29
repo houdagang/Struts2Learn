@@ -38,6 +38,7 @@
             <result name="success">/pages/HelloWorld.jsp</result>
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
+
 问题：
     1.因为默认的struts.xml是放在WEB-INF/classes下面的，怎么更改默认的位置。
      <filter>

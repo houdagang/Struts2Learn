@@ -18,14 +18,33 @@
             <interceptor-ref name="params"/>
             <interceptor-ref name="myinterceptor"/>
             <!-- 默认的name是success，不写也是success -->
-            <result name="success">/pages/HelloWorld.jsp</result>
+            <result name="success" type="dispatcher">
+                <param name="location">
+                    /pages/HelloWorld.jsp
+                </param>
+            </result>
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
 
         <action name="someother" class="com.xiaogang.struts2.learn.action.SomeOtherClass" method="execute">
-            <result name="success">/pages/Something.jsp</result>
+            <result name="success" type="freemarker">
+                <param name="location">
+                    /pages/HelloWorld.fm
+                </param>
+            </result>
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
+
+        <!-- 重定向 -->
+        <action name="sendRedirect" class="com.xiaogang.struts2.learn.action.SendRedirectAction" method="execute">
+            <result name="success" type="redirect">
+                <param name="location">
+                    /pages/NewWorld.jsp
+                </param >
+            </result>
+            <result name="error">/pages/AccessDenied.jsp</result>
+        </action>
+
 
     </package>
 </struts>
