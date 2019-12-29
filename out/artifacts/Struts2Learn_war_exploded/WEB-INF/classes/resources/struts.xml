@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="helloworld" extends="struts-default">
+
+        <!-- 注册拦截器 -->
+        <interceptors>
+            <interceptor name="myinterceptor" class="com.xiaogang.struts2.learn.action.MyInterceptor" />
+        </interceptors>
+
+        <!-- 默认方法是execute -->
+        <action name="hello" class="com.xiaogang.struts2.learn.action.HelloWorldAction" method="execute">
+            <!-- 拦截器 -->
+            <interceptor-ref name="timer" />
+            <interceptor-ref name="params"/>
+            <interceptor-ref name="myinterceptor"/>
+            <!-- 默认的name是success，不写也是success -->
+            <result name="success">/pages/HelloWorld.jsp</result>
+            <result name="error">/pages/AccessDenied.jsp</result>
+        </action>
+
+        <action name="someother" class="com.xiaogang.struts2.learn.action.SomeOtherClass" method="execute">
+            <result name="success">/pages/Something.jsp</result>
+            <result name="error">/pages/AccessDenied.jsp</result>
+        </action>
+
+    </package>
+</struts>

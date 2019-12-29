@@ -1,0 +1,56 @@
+记录：
+    1.各个版本的struts2的过滤器接入点不一样。
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>
+            <!--2.5版本的写法 -->
+            org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter
+            <!--2.3版本写法-->
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+            <!--2.23版本的写法 -->
+            org.apache.struts2.dispatcher.FilterDispatcher
+        </filter-class>
+    </filter>
+    2.struts.xml中默认的方法和返回值。
+    <!-- 默认方法是execute -->
+    <action name="hello" class="com.xiaogang.struts2.learn.action.HelloWorldAction" method="execute">
+        <!-- 默认的name是success，不写也是success -->
+        <result name="success">/pages/HelloWorld.jsp</result>
+    </action>
+
+    3.当struts.xml中action 的 name一样的情况下，默认执行下面的那个。
+
+    4.实现struts2 自定义拦截器的两种方式。
+        1:实现com.opensymphony.xwork2.interceptor.Interceptor接口.
+        2:继承com.opensymphony.xwork2.interceptor.AbstractInterceptor类.
+        <!-- 注册拦截器 -->
+        <interceptors>
+            <interceptor name="myinterceptor" class="com.xiaogang.struts2.learn.action.MyInterceptor" />
+        </interceptors>
+
+        <!-- 默认方法是execute -->
+        <action name="hello" class="com.xiaogang.struts2.learn.action.HelloWorldAction" method="execute">
+            <!-- 拦截器 -->
+            <interceptor-ref name="timer" />
+            <interceptor-ref name="params"/>
+            <interceptor-ref name="myinterceptor"/>
+            <!-- 默认的name是success，不写也是success -->
+            <result name="success">/pages/HelloWorld.jsp</result>
+            <result name="error">/pages/AccessDenied.jsp</result>
+        </action>
+问题：
+    1.因为默认的struts.xml是放在WEB-INF/classes下面的，怎么更改默认的位置。
+     <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>
+            <!--2.5版本的写法 -->
+            org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter
+        </filter-class>
+        <!-- 更改默认的路径 -->
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>struts-default.xml,struts-plugin.xml,resources/struts.xml</param-value>
+        </init-param>
+    </filter>
+
+    2.默认的拦截器不起作用：params拦截器与 timer拦截器。
