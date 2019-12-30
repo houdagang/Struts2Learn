@@ -10,7 +10,16 @@ import com.opensymphony.xwork2.Action;
  */
 public class SendRedirectAction implements Action {
 
+    private String name;
     public String execute() {
         return SUCCESS;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

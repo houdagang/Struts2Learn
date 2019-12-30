@@ -5,6 +5,6 @@
     <title>重定向</title>
 </head>
 <body>
-    重定向 : ${name},你好
+    重定向 : <s:property value="name"/>,你好
 </body>
 </html>

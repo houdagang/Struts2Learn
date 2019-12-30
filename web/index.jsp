@@ -7,10 +7,11 @@
 <body>
     <h1>Hello World From Struts2</h1>
     <%-- 这个action里面 someother == someother.action --%>
-    <form action="sendRedirect">
+    <%--<form action="sendRedirect">--%>
     <%--<form action="hello">--%>
+    <form action="someother">
         <label for="name">Please enter your name</label><br/>
-        <input type="text" name="name"/>
+        <s:select list="{'1','2','3'}" name="name"/>
         <input type="submit" value="Say Hello"/>
     </form>
 </body>

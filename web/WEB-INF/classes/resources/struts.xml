@@ -27,11 +27,12 @@
         </action>
 
         <action name="someother" class="com.xiaogang.struts2.learn.action.SomeOtherClass" method="execute">
-            <result name="success" type="freemarker">
+            <!--<result name="success" type="freemarker">
                 <param name="location">
                     /pages/HelloWorld.fm
                 </param>
-            </result>
+            </result>-->
+            <result name="success">/pages/Something.jsp</result>
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
 
