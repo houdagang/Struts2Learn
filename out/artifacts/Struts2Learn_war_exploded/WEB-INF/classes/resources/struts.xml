@@ -4,12 +4,21 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
+    <constant name="struts.multipart.maxSize" value="157286400" />
     <package name="helloworld" extends="struts-default">
-
         <!-- 注册拦截器 -->
         <interceptors>
             <interceptor name="myinterceptor" class="com.xiaogang.struts2.learn.action.MyInterceptor" />
         </interceptors>
+
+        <action name="upload" class="com.xiaogang.struts2.learn.action.UploadFile" method="execute">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="fileUpload">
+                <param name="allowedTypes">application/pdf,text/plain,image/bmp,image/png,image/jpg</param>
+            </interceptor-ref>
+            <result name="success">/pages/FileSuccess.jsp</result>
+            <result name="error">/pages/FileError.jsp</result>
+        </action>
 
         <!-- 默认方法是execute -->
         <action name="hello" class="com.xiaogang.struts2.learn.action.HelloWorldAction" method="execute">
@@ -27,11 +36,12 @@
         </action>
 
         <action name="someother" class="com.xiaogang.struts2.learn.action.SomeOtherClass" method="execute">
-            <result name="success" type="freemarker">
+            <!--<result name="success" type="freemarker">
                 <param name="location">
                     /pages/HelloWorld.fm
                 </param>
-            </result>
+            </result>-->
+            <result name="success">/pages/Something.jsp</result>
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
 

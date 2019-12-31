@@ -39,6 +39,24 @@
             <result name="error">/pages/AccessDenied.jsp</result>
         </action>
 
+    5.上传附件。
+        （1）如果要配置自定义的拦截器，比如大小，格式的时候。则必须用
+            <interceptor-ref name="defaultStack"/>
+            然后后面或前面再写上配置要求。
+            <interceptor-ref name="fileUpload">
+                <!-- 配置允许上传的文件类型，多个用","分隔 -->
+                <param name="allowedTypes">
+                    image/bmp,image/png,image/gif,image/jpg
+                </param>
+                <!-- 配置允许上传的文件大小，单位字节，默认为2M -->
+                <param name="maximumSize">102400</param>
+            </interceptor-ref>
+        （2）前台上传文件的name要与action里面的属性一致。struts2会自动获取文件名和文件类型，
+            前提是文件名与文件类型的属性，必须是name属性加上ContentType和FileName。
+            例如：
+            private File myFile;
+            private String myFileContentType;
+            private String myFileFileName;
 问题：
     1.因为默认的struts.xml是放在WEB-INF/classes下面的，怎么更改默认的位置。
      <filter>
