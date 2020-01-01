@@ -57,6 +57,9 @@
             private File myFile;
             private String myFileContentType;
             private String myFileFileName;
+
+    6. 发送邮件。
+        注意发送的邮箱要开启POP3/SMTP服务。用获取的授权码当做密码。qq号当做用户名。
 问题：
     1.因为默认的struts.xml是放在WEB-INF/classes下面的，怎么更改默认的位置。
      <filter>
