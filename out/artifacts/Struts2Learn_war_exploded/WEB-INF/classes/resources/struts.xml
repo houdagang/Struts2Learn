@@ -60,5 +60,10 @@
             <result name="error">/pages/email/sendError.jsp</result>
         </action>
 
+        <action name="empinfo" class="com.xiaogang.struts2.learn.action.Employee" method="execute">
+            <result name="input">/form_index.jsp</result>
+            <result name="success">/pages/form/success.jsp</result>
+        </action>
+
     </package>
 </struts>

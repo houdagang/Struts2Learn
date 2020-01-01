@@ -60,6 +60,12 @@
 
     6. 发送邮件。
         注意发送的邮箱要开启POP3/SMTP服务。用获取的授权码当做密码。qq号当做用户名。
+
+    7.表单验证。
+        当用户按下提交按钮时，Struts2 将自动执行validate方法，如果方法中列出的任何if语句为真，Struts2 将调用addFieldError方法。
+        如果添加了任何错误信息，Struts2 将不会调用execute方法。否则，Struts2 框架将返回input作为调用操作的结果。
+        因此，当验证失败并且Struts2 返回input时，Struts2 框架将重新显示index.jsp文件。
+        由于我们使用Struts2 的form标签，Struts2 会自动在form字段上方添加错误信息。
 问题：
     1.因为默认的struts.xml是放在WEB-INF/classes下面的，怎么更改默认的位置。
      <filter>
